@@ -106,7 +106,7 @@ public class NotifyRestaurantOwnerTest {
             assertEquals(outputEvent.getPrice(), new Money(10.0, "KRW"));
             assertEquals(outputEvent.getDescription(), "메뉴1의 설명");
         } catch (Exception e) {
-            // TODO Auto-generated catch block
+            LOGGER.error("exception", e);
             assertTrue("exception", false);
         }
     }
