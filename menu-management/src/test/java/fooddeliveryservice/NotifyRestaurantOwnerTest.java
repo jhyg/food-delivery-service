@@ -58,14 +58,7 @@ public class NotifyRestaurantOwnerTest {
 
         //when:
 
-        OrderPlaced event = new OrderPlaced();
-
-        event.setOrderId("1");
-        event.setCustomerId("고객1");
-        event.setRestaurantId("식당1");
-        event.setMenu("메뉴1");
-        event.setQuantity(2);
-        event.setPayment(new Money(20.0, "KRW"));
+        MenuRegistered event = new MenuRegistered(entity);
 
         MenuManagementApplication.applicationContext = applicationContext;
 
