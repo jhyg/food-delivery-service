@@ -28,7 +28,7 @@ import org.springframework.util.MimeTypeUtils;
 public class NotifyRestaurantOwnerTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(
-        EventTest.class
+        NotifyRestaurantOwnerTest.class
     );
 
     @Autowired
@@ -67,7 +67,7 @@ public class NotifyRestaurantOwnerTest {
         event.setQuantity(2);
         event.setPayment(new Money(20.0, "KRW"));
 
-        InventoryApplication.applicationContext = applicationContext;
+        MenuManagementApplication.applicationContext = applicationContext;
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -96,11 +96,16 @@ public class NotifyRestaurantOwnerTest {
 
             LOGGER.info("Response received: {}", received.getPayload());
 
+            MenuRegistered outputEvent = objectMapper.readValue(
+                received.getPayload(),
+                MenuRegistered.class
+            );
+
             assertEquals(outputEvent.getMenuId(), "1");
             assertEquals(outputEvent.getName(), "메뉴1");
             assertEquals(outputEvent.getPrice(), new Money(10.0, "KRW"));
             assertEquals(outputEvent.getDescription(), "메뉴1의 설명");
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             assertTrue("exception", false);
         }
