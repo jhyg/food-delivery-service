@@ -41,7 +41,7 @@ public class NotifyRestaurantOwnerTest {
     private ApplicationContext applicationContext;
 
     @Autowired
-    public MenuRegisteredRepository repository;
+    public MenuRepository repository;
 
     @Test
     @SuppressWarnings("unchecked")
