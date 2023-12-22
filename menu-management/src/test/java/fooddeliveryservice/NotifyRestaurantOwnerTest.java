@@ -47,7 +47,7 @@ public class NotifyRestaurantOwnerTest {
     @SuppressWarnings("unchecked")
     public void test0() {
         //given:
-        MenuRegistered entity = new MenuRegistered();
+        Menu entity = new Menu();
 
         entity.setMenuId("1");
         entity.setName("메뉴1");
